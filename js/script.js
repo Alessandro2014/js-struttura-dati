@@ -26,7 +26,7 @@ const carta = {     //dichiarazione primo oggetto
     ],
     numeroCollezione: '177/350',
     costituzione: 2,
-    forza: 2,
+    forza: 5,
     coloreBordo: 'black',
 
     illustrazione: {    // innesto oggetto per autore
@@ -41,38 +41,60 @@ const carta = {     //dichiarazione primo oggetto
 
 console.log(carta);
 
-            //* STAMPA IN PAGINA
-const sezioneCarta = document.getElementById('carta');
+            //* FUNZIONE PREDISPOSIZIONE STAMPA
+const cartaTemplate = creaCartaTemplate(carta);
 
-const specTipoCarta = carta.specTipoCarta ? ` ${carta.specTipoCarta}` :' ';
+function creaCartaTemplate (carta) {
+    const specTipoCarta = carta.specTipoCarta ? ` ${carta.specTipoCarta}` :' ';
 
 let contAbilita = '<em>Nessuna abilità</em>'
 if (carta.specTipoCarta.length > 0) {
     contAbilita = '<ul>';
     for (let i = 0; i < carta.abilita.length; i++){
         const correntAbilita = carta.abilita[i];
-        contAbilita += `<li>Descrizione: ${correntAbilita.descrizione}</li>`;
+        contAbilita += `<li><em>Descrizione:</em> ${correntAbilita.descrizione}</li>`;
         contAbilita += `<li>Costo di Lancio: ${correntAbilita.costoLancio.join(' ')}</li>`;
     }
-    contAbilita = '</ul>';
+    contAbilita += '</ul>';
 }
 
-let cartaTemplate = `
+const cartaTemplate = `
 <ul class="card"> 
     <li><strong>Id: ${carta.id}</strong></li>
     <li>Nome: ${carta.nome}</li>
     <li>Costo di Lancio: ${carta.costoLancio.join(' ')}</li>
     <li>Costo mana combinato: ${carta.costoManaCombinato}</li>
     <li>Tipo carta: ${carta.specTipoCarta}</li>
-    <br>
+
     <li><strong>Espansione:</strong></li>
+<ul>
         <li>Stampa Edizione: ${carta.espansione.nEdizione}</li>
         <li>Rarità:: ${carta.espansione.rarita}</li>
         <li>Collezione Numero: ${carta.espansione.collezioneNum}</li>
+</ul>
+
     <li><strong>Colore di Testo:</strong></li>
         <li>Dichiarazioni: ${carta.testoDiColore.dichiarazioni}</li>
         <li>Autore: ${carta.testoDiColore.autore}</li>
-    
+    <li><strong>Abilita:</strong> ${contAbilita}</li>
+    <li>Numero Collezione: ${carta.numeroCollezione}</li>
+    <li>Costituzione: ${carta.costituzione}</li>
+    <li>Forza: ${carta.forza}</li>
+    <li>Colore Bordo: ${carta.coloreBordo}</li>
+    <li><strong>Illustrazione:</strong></li>
+    <ul>
+        <li>Autore: ${carta.illustrazione.autore.nome} (id: ${carta.illustrazione.autore.id})</li>
+        <li>Sorgente: ${carta.illustrazione.sorgente}</li>
+        <li>Colore Sfondo: ${carta.illustrazione.coloreSfondo}</li>
     </ul>
-`
+</ul>
+`;
+    return cartaTemplate;
+}
+
+
+
+
+const sezioneCarta = document.getElementById('carta');
+
 sezioneCarta.innerHTML = cartaTemplate;
