@@ -59,19 +59,20 @@ if (carta.specTipoCarta.length > 0) {
 
 let cartaTemplate = `
 <ul class="card"> 
-    <li>Id: ${carta.id}</li>
+    <li><strong>Id: ${carta.id}</strong></li>
     <li>Nome: ${carta.nome}</li>
     <li>Costo di Lancio: ${carta.costoLancio.join(' ')}</li>
     <li>Costo mana combinato: ${carta.costoManaCombinato}</li>
     <li>Tipo carta: ${carta.specTipoCarta}</li>
-    <li>Espansione:</li>
-</ul>
-    <ul> 
-        <li>Id: ${carta.id}</li>
-        <li>Id: ${carta.nome}</li>
-        <li>Id: ${carta.costoLancio.join(' ')}</li>
-        <li>Id: ${carta.costoManaCombinato}</li>
-        <li>Id: ${carta.specTipoCarta}</li>
+    <br>
+    <li><strong>Espansione:</strong></li>
+        <li>Stampa Edizione: ${carta.espansione.nEdizione}</li>
+        <li>Rarità:: ${carta.espansione.rarita}</li>
+        <li>Collezione Numero: ${carta.espansione.collezioneNum}</li>
+    <li><strong>Colore di Testo:</strong></li>
+        <li>Dichiarazioni: ${carta.testoDiColore.dichiarazioni}</li>
+        <li>Autore: ${carta.testoDiColore.autore}</li>
+    
     </ul>
 `
 sezioneCarta.innerHTML = cartaTemplate;
