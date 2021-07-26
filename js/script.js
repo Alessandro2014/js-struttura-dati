@@ -66,7 +66,7 @@ const mazzo = [
     ],
     numeroCollezione: '177/350',
     costituzione: 2,
-    forza: 5,
+    forza: 2,
     coloreBordo: 'black',
     illustrazione: {    // innesto oggetto per autore
         autore: {
@@ -105,7 +105,7 @@ const mazzo = [
     ],
     numeroCollezione: '177/350',
     costituzione: 2,
-    forza: 5,
+    forza: 9,
     coloreBordo: 'black',
     illustrazione: {    // innesto oggetto per autore
         autore: {
@@ -144,7 +144,7 @@ const mazzo = [
     ],
     numeroCollezione: '177/350',
     costituzione: 2,
-    forza: 5,
+    forza: 13,
     coloreBordo: 'black',
     illustrazione: {    // innesto oggetto per autore
         autore: {
@@ -154,6 +154,84 @@ const mazzo = [
         sorgente: '/img.jpg',
     },
     coloreSfondo:'green',
+},
+{
+    id: 5,
+    nome: 'Dancing Scimitar',
+    costoLancio: ['6', 'R', 'R'],
+    costoManaCombinato: 8,
+    tipoCarta: 'Creatura',
+    specTipoCarta: 'Giant',
+    espansione: {       // innesto oggetto per espansioni
+        nEdizione: 9,
+        rarita: 'oro',
+        collezioneNum: 12,
+        },
+    testoDiColore: {        // innesto oggetto per infotesto
+        dichiarazioni: 'Anaba Shaman...',
+        autore:'Gog di Magog',
+    },
+    abilita: [          // innesto array abilità
+        {
+        costoLancio: ['R', 'T'],
+        descrizione: 'debole',  
+        },
+        {
+        costoLancio: ['W', 'B', 'T'],
+        descrizione: 'medio',    
+        },
+    ],
+    numeroCollezione: '177/350',
+    costituzione: 2,
+    forza: 7,
+    coloreBordo: 'black',
+    illustrazione: {    // innesto oggetto per autore
+        autore: {
+            id: 1,
+            nome: 'Ron Spears',
+        },
+        sorgente: '/img.jpg',
+    },
+    coloreSfondo:'red',
+},
+{
+    id: 6,
+    nome: 'Krosan Cloudseparer',
+    costoLancio: ['6', 'R', 'R'],
+    costoManaCombinato: 8,
+    tipoCarta: 'Creatura',
+    specTipoCarta: 'Giant',
+    espansione: {       // innesto oggetto per espansioni
+        nEdizione: 9,
+        rarita: 'oro',
+        collezioneNum: 12,
+        },
+    testoDiColore: {        // innesto oggetto per infotesto
+        dichiarazioni: 'Anaba Shaman...',
+        autore:'Gog di Magog',
+    },
+    abilita: [          // innesto array abilità
+        {
+        costoLancio: ['R', 'T'],
+        descrizione: 'debole',  
+        },
+        {
+        costoLancio: ['W', 'B', 'T'],
+        descrizione: 'medio',    
+        },
+    ],
+    numeroCollezione: '177/350',
+    costituzione: 2,
+    forza: 5,
+    coloreBordo: 'black',
+    illustrazione: {    // innesto oggetto per autore
+        autore: {
+            id: 1,
+            nome: 'Ron Spears',
+        },
+        sorgente: '/img.jpg',
+    },
+    coloreSfondo:'red',
 },
 ];
 
@@ -223,3 +301,19 @@ const stampaMazzo = (mazzo, elemento) => {
 
 stampaMazzo(mazzo, sezioneCarta);
 
+//? FILTRI
+
+const campoInput = document.getElementById('ricerca');
+const campoSelect = document.getElementById('filtri');
+const bottone = document.getElementById('bottone');
+
+//RIMOZIONE O AGGIUNTA CLASSE HIDDEN
+campoSelect.addEventListener('change', () => {
+    const valueCorrente = campoInput.value;
+    
+    if (valueCorrente !== 'Tutte') {
+        campoInput.classList.remove('hidden');
+    }   else {
+        campoInput.classList.add('hidden');
+    }
+});
