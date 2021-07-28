@@ -83,7 +83,7 @@ const mazzo = [
     costoLancio: ['6', 'R', 'R'],
     costoManaCombinato: 8,
     tipoCarta: 'Creatura',
-    specTipoCarta: 'Giant',
+    specTipoCarta: 'Simple',
     espansione: {       // innesto oggetto per espansioni
         nEdizione: 9,
         rarita: 'oro',
@@ -122,7 +122,7 @@ const mazzo = [
     costoLancio: ['3', 'T', 'T', 'T'],
     costoManaCombinato: 8,
     tipoCarta: 'Creatura',
-    specTipoCarta: 'Giant',
+    specTipoCarta: 'Animal',
     espansione: {       // innesto oggetto per espansioni
         nEdizione: 9,
         rarita: 'oro',
@@ -237,7 +237,7 @@ const mazzo = [
 
 
             //* FUNZIONE PREDISPOSIZIONE STAMPA
-// const cartaTemplate = creaCartaTemplate(mazzo[0]);
+    // const cartaTemplate = creaCartaTemplate(mazzo[0]);
 
 function creaCartaTemplate(carta) {
         const specTipoCarta = carta.specTipoCarta ? ` ${carta.specTipoCarta}` :' ';
@@ -307,13 +307,35 @@ const campoInput = document.getElementById('ricerca');
 const campoSelect = document.getElementById('filtri');
 const bottone = document.getElementById('bottone');
 
-//RIMOZIONE O AGGIUNTA CLASSE HIDDEN
+    //RIMOZIONE O AGGIUNTA CLASSE HIDDEN 
 campoSelect.addEventListener('change', () => {
-    const valueCorrente = campoInput.value;
+    const valueCorrente = campoSelect.value;
     
-    if (valueCorrente !== 'Tutte') {
+    if (valueCorrente !== 'tutte') {
         campoInput.classList.remove('hidden');
     }   else {
         campoInput.classList.add('hidden');
     }
+});
+
+    //FILTRO
+    bottone.addEventListener('click', () => {
+    const inputValue = campoInput.value;
+    const selectValue = campoSelect.value;
+
+    if (selectValue == 'tutte') {
+        stampaMazzo(mazzo, sezioneCarta);
+        return;
+    }   
+
+    const mazzoFiltrato = [];
+    for(let i = 0; i < mazzo.length; i++){
+        const cardCorrente = mazzo[i];
+        if (cardCorrente[selectValue].includes(inputValue.trim())){
+            mazzoFiltrato.push(cardCorrente);
+        }
+    }
+
+    stampaMazzo(mazzoFiltrato, sezioneCarta);
+
 });

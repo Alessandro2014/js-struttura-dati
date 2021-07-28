@@ -1,0 +1,19 @@
+*{
+    box-sizing: border-box;
+}
+
+section > ul {
+    border: 2px solid rgb(158, 0, 0);
+    width: 300px;
+    border-radius: 15px;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+select, input, button {
+    margin: 10px 0 10px 10px;
+}

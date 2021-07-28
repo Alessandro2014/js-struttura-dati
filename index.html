@@ -1,12 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Card</title>
 </head>
 <body>
+    <select id="filtri">
+        <option selected value="tutte">Tutte</option>
+        <option value="id">Id</option>
+        <option value="nome">Nome</option>
+        <option value="costoManaCombinato">Costo Mana Combinato</option>
+        <option value="tipoCarta">Tipo Carta</option>
+        <option value="forza">Forza</option>
+    </select>
+    <input type="text" id="ricerca" placeholder="Cosa vuoi cercare?" class="hidden">
+    <button id="bottone">Filtra</button>
+    <hr>
     <section id="carta"></section>
     <script src="js/script.js"></script>
 </body>
